@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "3ba19470-865c-4ce0-b9d7-5e625589af02",
+		"name": "ElasticSearch-Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24455686"
+	},
+	"item": [
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/findAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "init-index",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/init-index",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"init-index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createIndex",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"91\",\n    \"name\": \"monalisa\",\n    \"price\": 1,\n    \"brand\": \"classic\",\n    \"category\": \"sanat\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchItemsByFieldAndValue",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fieldName\": [\n        \"name\"\n    ],\n    \"searchValue\": [\n        \"abstract\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchItemsByNameAndBrandWithQuery",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/search/Canvas/Dream",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"search",
+						"Canvas",
+						"Dream"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "autoSuggestItemsByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/autoSuggest/ab",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"autoSuggest",
+						"ab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllItemsFromAllIndexes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/allIndexes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"allIndexes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllDataFromIndex",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/getAllDataFromIndex/items_index",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"getAllDataFromIndex",
+						"items_index"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "boolQuery",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fieldName\": [\n        \"name\",\n        \"brand\"\n    ],\n    \"searchValue\": [\n        \"mega\",\n        \"xyz\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/boolQuery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"boolQuery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "autoSuggestItemSearchWithQuery",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/elastic/arts/suggestionsQuery/ab",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"elastic",
+						"arts",
+						"suggestionsQuery",
+						"ab"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

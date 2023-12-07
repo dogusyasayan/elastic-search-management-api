@@ -1,0 +1,72 @@
+[
+  {
+    "id": "80",
+    "name": "Abstract Composition",
+    "price": 199.99,
+    "brand": "Artistic Studios",
+    "category": "Art"
+  },
+  {
+    "id": "81",
+    "name": "Sculpture of Harmony",
+    "price": 299.99,
+    "brand": "Creative Sculptures",
+    "category": "Art"
+  },
+  {
+    "id": "82",
+    "name": "Nature's Canvas",
+    "price": 149.99,
+    "brand": "Natural Expressions",
+    "category": "Art"
+  },
+  {
+    "id": "83",
+    "name": "Ethereal Symphony",
+    "price": 449.99,
+    "brand": "Harmony Arts",
+    "category": "Art"
+  },
+  {
+    "id": "84",
+    "name": "Ancient Inspirations",
+    "price": 199.99,
+    "brand": "Timeless Artistry",
+    "category": "Art"
+  },
+  {
+    "id": "85",
+    "name": "Canvas of Dreams",
+    "price": 349.99,
+    "brand": "Dream Creations",
+    "category": "Art"
+  },
+  {
+    "id": "86",
+    "name": "Whimsical Vision",
+    "price": 129.99,
+    "brand": "Imaginary Arts",
+    "category": "Art"
+  },
+  {
+    "id": "87",
+    "name": "Enigmatic Impressions",
+    "price": 279.99,
+    "brand": "Mystery Studios",
+    "category": "Art"
+  },
+  {
+    "id": "88",
+    "name": "Abstract Reflections",
+    "price": 199.99,
+    "brand": "Reflective Artworks",
+    "category": "Art"
+  },
+  {
+    "id": "89",
+    "name": "Infinite Creativity",
+    "price": 399.99,
+    "brand": "Limitless Designs",
+    "category": "Art"
+  }
+]
