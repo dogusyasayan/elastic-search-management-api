@@ -1,24 +1,23 @@
 package com.elasticsearchintegration.config;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.ComponentScan;
+import org.apache.http.protocol.HTTP;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfiguration;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+import org.springframework.data.elasticsearch.support.HttpHeaders;
 
 /**
  * ElasticSearch konfigürasyon sınıfı.
  * Bu sınıf, ElasticSearch bağlantısını ve temel yapılandırmayı sağlar.
  */
-@Configuration
 @EnableElasticsearchRepositories(basePackages = "com.elasticsearchintegration.repository")
-@ComponentScan(basePackages = "com.elasticsearchintegration")
-public class ElasticSearchConfig extends ElasticsearchConfiguration {
+@Configuration
+public abstract class ElasticSearchConfig extends ElasticsearchConfiguration {
 
     // ElasticSearch sunucu URL'sini içeren özellik.
-    @Value("${elasticsearch.url}")
-    private String url;
+    private static final String ELASTICSEARCH_URL = "localhost:9200";
 
     /**
      * ElasticSearch için yapılandırılmış bir ClientConfiguration nesnesi döndürür.
@@ -27,7 +26,7 @@ public class ElasticSearchConfig extends ElasticsearchConfiguration {
      */
     public ClientConfiguration clientConfiguration() {
         return ClientConfiguration.builder()
-                .connectedTo(url) // Belirtilen URL'ye bağlantı kurulur.
+                .connectedTo(ELASTICSEARCH_URL) // Sabit URL'ye bağlantı kurulur.
                 .build();
     }
 }

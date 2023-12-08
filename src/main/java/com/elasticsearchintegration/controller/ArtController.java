@@ -1,7 +1,7 @@
 package com.elasticsearchintegration.controller;
 
 import com.elasticsearchintegration.domain.Art;
-import com.elasticsearchintegration.model.request.SearchRequest;
+import com.elasticsearchintegration.model.request.SearchArtRequest;
 import com.elasticsearchintegration.service.ArtService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Set;
 
-/**
- * ArtController, Elasticsearch ile etkileşimde bulunan RESTful API'leri sağlar.
- */
 @RestController
 @RequestMapping("/api/elastic/arts")
 @RequiredArgsConstructor
@@ -82,7 +80,7 @@ public class ArtController {
      * @return Belirli bir alan ve değere göre sanat eserleri
      */
     @GetMapping("/search")
-    public List<Art> searchItemsByFieldAndValue(@RequestBody SearchRequest searchRequest) {
+    public List<Art> searchItemsByFieldAndValue(@RequestBody SearchArtRequest searchRequest) {
         return artService.searchItemsByFieldAndValue(searchRequest);
     }
 
@@ -105,7 +103,7 @@ public class ArtController {
      * @return Boolean sorgusu sonucunda elde edilen sanat eserleri
      */
     @GetMapping("/boolQuery")
-    public List<Art> boolQuery(@RequestBody SearchRequest searchRequest) {
+    public List<Art> boolQuery(@RequestBody SearchArtRequest searchRequest) {
         return artService.boolQueryFieldAndValue(searchRequest);
     }
 
@@ -129,5 +127,10 @@ public class ArtController {
     @GetMapping("/suggestionsQuery/{name}")
     public List<String> autoSuggestItemsByNameWithQuery(@PathVariable String name) {
         return artService.autoSuggestItemsByNameWithQuery(name);
+    }
+
+    @GetMapping("/art")
+    public List<Art> getArtsAccordingToName(@RequestParam String name) throws Exception {
+        return artService.searchItems(name);
     }
 }

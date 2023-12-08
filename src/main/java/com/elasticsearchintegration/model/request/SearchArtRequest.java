@@ -6,7 +6,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class SearchRequest {
+public class SearchArtRequest {
 
     private List<String> fieldName;
     private List<String> searchValue;

@@ -5,7 +5,7 @@ import co.elastic.clients.elasticsearch._types.query_dsl.MatchAllQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.MatchQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import co.elastic.clients.elasticsearch._types.query_dsl.TermQuery;
-import com.elasticsearchintegration.model.request.SearchRequest;
+import com.elasticsearchintegration.model.request.SearchArtRequest;
 import lombok.experimental.UtilityClass;
 
 import java.util.function.Supplier;
@@ -56,7 +56,7 @@ public class ElasticSearchUtil {
      * @param dto Arama talebini içeren veri transfer nesnesi
      * @return Boolean sorgusu
      */
-    public static Supplier<Query> createBoolQuery(SearchRequest dto) {
+    public static Supplier<Query> createBoolQuery(SearchArtRequest dto) {
         return () -> Query.of(q -> q.bool(boolQuery(dto.getFieldName().get(0).toString(), dto.getSearchValue().get(0),
                 dto.getFieldName().get(1).toString(), dto.getSearchValue().get(1))));
     }

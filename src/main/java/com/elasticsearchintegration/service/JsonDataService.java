@@ -4,6 +4,7 @@ import com.elasticsearchintegration.domain.Art;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class JsonDataService {
 
     private final ObjectMapper objectMapper;
@@ -25,6 +27,7 @@ public class JsonDataService {
             return objectMapper.readValue(inputStream, new TypeReference<List<Art>>() {
             });
         } catch (Exception e) {
+            log.error("JSON verilerini okuma sırasında bir hata oluştu : {}", e.getMessage());
             throw new RuntimeException("JSON verilerini okuma sırasında bir hata oluştu.", e);
         }
     }

@@ -1,6 +1,7 @@
 package com.elasticsearchintegration.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -11,6 +12,7 @@ import org.springframework.data.elasticsearch.annotations.Setting;
 
 @Getter
 @Setter
+@Builder
 @Document(indexName = "arts_index") // Elasticsearch indeks adı
 @Setting(settingPath = "static/es-settings.json") // Elasticsearch ayar dosyasının yolu
 @JsonIgnoreProperties(ignoreUnknown = true)
