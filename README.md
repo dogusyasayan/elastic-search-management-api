@@ -79,6 +79,68 @@ Elasticsearch indeksi için kullanılan özel ayarlar:
 }
 ```
 
+## Elasticsearch Sorgu Tipleri
+
+<details>
+<summary>Match Query</summary>
+Belirli bir metin terimini veya sorgu ifadesini arar ve eslesen belgeleri dondurur.
+</details>
+
+<details>
+<summary>Term Query</summary>
+Belirli bir alanin degerinin tam eslesme icin kullanilir.
+</details>
+
+<details>
+<summary>Bool Query</summary>
+Mantiksal operatorleri (AND, OR, NOT) kullanarak birden cok sorguyu birlestirmek icin kullanilir.
+</details>
+
+<details>
+<summary>Range Query</summary>
+Bir alanin belirli bir araliga dusup dusmedigini kontrol eder.
+</details>
+
+<details>
+<summary>Fuzzy Query</summary>
+Benzer ancak kesin olmayan terimleri aramak icin kullanilir.
+</details>
+
+<details>
+<summary>Wildcard Query</summary>
+Jokert karakterler (* veya ?) kullanarak eslesen terimleri bulmak icin kullanilir.
+</details>
+
+<details>
+<summary>Prefix Query</summary>
+Belirli bir on ek ile baslayan terimleri aramak icin kullanilir.
+</details>
+
+<details>
+<summary>Autocomplete Suggester</summary>
+Otomatik tamamlama islevselligi icin kullanilir ve kullanicinin yazmaya basladigi terimleri tamamlamak icin kullanilir.
+</details>
+
+<details>
+<summary>Highlighting</summary>
+Eslesen terimleri veya metni vurgulamak icin kullanilir.
+</details>
+
+<details>
+<summary>Aggregations</summary>
+Verileri toplamak, gruplamak ve analiz etmek icin kullanilir.
+</details>
+
+<details>
+<summary>Ranking Functions</summary>
+Elasticsearch'in belgeleri siralamak icin kullanabileceginiz cesitli siralama islevleri vardir.
+</details>
+
+<details>
+<summary>Match Phrase Query</summary>
+Metin teriminin tamamini iceren belgeleri dondurmek icin kullanilir.
+</details>
+
 ## API Endpointleri
 
 - **POST /api/elastic/arts:** Yeni bir sanat eseri eklemek için Elasticsearch'e uygun RESTful API.
