@@ -1,26 +1,15 @@
 package com.elasticsearchintegration.service;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch._types.SearchType;
-import co.elastic.clients.elasticsearch._types.query_dsl.BoolQuery;
-import co.elastic.clients.elasticsearch._types.query_dsl.MatchQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
-import co.elastic.clients.elasticsearch._types.query_dsl.QueryBuilders;
-import co.elastic.clients.elasticsearch._types.query_dsl.TermQuery;
-import co.elastic.clients.elasticsearch.core.GetRequest;
-import co.elastic.clients.elasticsearch.core.SearchRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
-import co.elastic.clients.elasticsearch.core.search.SourceConfigParam;
-import co.elastic.clients.util.ObjectBuilder;
 import com.elasticsearchintegration.domain.Art;
-import com.elasticsearchintegration.mapper.SearchResponseMapper;
 import com.elasticsearchintegration.model.request.SearchArtRequest;
 import com.elasticsearchintegration.repository.ArtRepository;
 import com.elasticsearchintegration.utils.ElasticSearchUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.client.RequestOptions;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -37,7 +26,6 @@ public class ArtService {
     private final ArtRepository artRepository;
     private final JsonDataService jsonDataService;
     private final ElasticsearchClient elasticsearchClient;
-    private final SearchResponseMapper searchResponseMapper;
 
     /**
      * Yeni bir sanat eseri ekler ve Elasticsearch üzerinde index oluşturur.
@@ -216,18 +204,5 @@ public class ArtService {
                 .stream()
                 .map(Hit::source)
                 .collect(Collectors.toList());
-    }
-
-    public List<Art> searchItems(String name) throws Exception{
-        Query termquery = MatchQuery.of(t -> t.field("name").query("Abstract"))._toQuery();
-        SearchRequest newSearchRequest = SearchRequest.of(q -> q.index("arts_index").query(termquery).size(10));
-        try {
-            SearchResponse<Art> searchResponse = elasticsearchClient.search(newSearchRequest, Art.class);
-            return searchResponseMapper.mapper(searchResponse);
-
-        }catch (Exception e) {
-            log.error("Elastic Search Exception: {}", e.getMessage());
-        }
-        return Collections.singletonList(Art.builder().build());
     }
 }
